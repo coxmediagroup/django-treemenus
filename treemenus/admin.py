@@ -13,7 +13,7 @@ from django.core.exceptions import PermissionDenied
 from treemenus.models import Menu, MenuItem
 from treemenus.utils import get_parent_choices, MenuItemChoiceField, \
     move_item_or_clean_ranks
-
+from treemenus.forms import MenuForm
 
 class MenuItemAdmin(admin.ModelAdmin):
     ''' This class is used as a proxy by MenuAdmin to manipulate menu
@@ -81,7 +81,12 @@ class MenuAdmin(admin.ModelAdmin):
             'fields': ('sites',)
         }),
     )
-    list_display = ('name', 'originating_site')
+
+    form = MenuForm
+
+    list_display = ( 'name', 'originating_site' )
+    list_display_links = ( 'name', )
+    list_filter = ( 'originating_site', 'name' )
 
     def __call__(self, request, url):
         ''' DEPRECATED!! More recent versions of Django use the get_urls
