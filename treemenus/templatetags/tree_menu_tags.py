@@ -11,7 +11,7 @@ from treemenus.config import APP_LABEL
 register = template.Library()
 
 def show_menu(context, menu_name, domain_name, menu_type=None):
-    site = Site.objects.get(domain=domain_name.replace('_','.'))
+    site = Site.objects.get(domain__endswith=domain_name.replace('_','.'))
     menu = Menu.objects.get(name=menu_name, originating_site=site)
     context['menu'] = menu
     if menu_type:
