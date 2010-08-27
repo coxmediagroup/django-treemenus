@@ -2,10 +2,11 @@
 
 from django import forms
 from django.forms.util import ErrorList
+from ellington.core.admin import BaseModelForm
 
 from treemenus.models import Menu
 
-class MenuForm(forms.ModelForm):
+class MenuForm(BaseModelForm):
     """This is the form for editing a Menu model"""
 
     def __init__(self, *args, **kwargs):

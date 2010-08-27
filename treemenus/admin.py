@@ -76,10 +76,6 @@ class MenuAdmin(admin.ModelAdmin):
         (None, {
             'fields': ('name', 'originating_site')
         }),
-        ('Advanced options', {
-            'classes': ('collapse',),
-            'fields': ('sites',)
-        }),
     )
 
     form = MenuForm
